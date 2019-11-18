@@ -1,0 +1,128 @@
+#include<stdio.h>
+
+
+
+    int main(){
+
+    FILE *arquivo;
+    int aux, idade, qs, aux2;
+    char nomepet[20], nomed[20], esp[20], desc[100], diag[20], cadastros[1000], nomepet1[20], nomearqex[20];
+
+    do{
+    printf("1: cadastro\n");
+    printf("2: ver cadastros\n");
+    printf("3: remover cadastros\n");
+    printf("4: mudar registro\n");
+    printf("5: ver cadastrados \n");
+    printf("6: sair \n");
+    scanf("%d",&aux);
+    system("cls");
+
+    switch(aux){
+        system("cls");
+    case 1:
+
+        printf("qual o nome do pet:");
+        scanf("%s",&nomepet);
+        printf("qual o nome do dono:");
+        scanf("%s",&nomed);
+        printf("qual a especie:");
+        scanf("%s",esp);
+        printf("qual a idade:");
+        scanf("%d", &idade);
+        printf("quais sintomas:");
+        scanf("%s",&desc);
+        printf("qual o diagnostico:");
+        scanf("%s",&diag);
+        system("cls");
+
+        arquivo = fopen (nomepet,"a");
+        fprintf(arquivo,"nome do animal: %s\n",nomepet);
+        fprintf(arquivo,"nome do dono: %s\n",nomed);
+        fprintf(arquivo,"especie: %s\n",esp);
+        fprintf(arquivo,"idade: %d\n",idade);
+        fprintf(arquivo,"sintomas: %s\n",desc);
+        fprintf(arquivo,"diagnostico: %s\n\n",diag);
+        fclose(arquivo);
+
+        arquivo = fopen ("cadastros.txt","a");
+
+        fprintf(arquivo,"nome: %s\n\n",nomepet);
+
+        fclose(arquivo);
+
+        break;
+
+    case 2:
+        printf("qual o nome do animal?\n");
+        scanf("%s",&nomepet1);
+        system("cls");
+        arquivo = fopen(nomepet1,"r");
+        while(fgets(cadastros, 1000, arquivo)!= NULL)
+            printf("%s",cadastros);
+             if (arquivo == NULL)
+{
+    printf("esse nome nao conta nos registros!\n");
+}
+        fclose(arquivo);
+        getch();
+        system("cls");
+        break;
+
+
+    case 3:
+        printf("qual cadastro voce quer remover?\n");
+        scanf("%s",&nomearqex);
+        remove(nomearqex);
+        printf("arquivo foi excluido\n");
+        getch();
+        system("cls");
+        break;
+
+    case 4:
+        printf("qual cadastro voce vai modificar?\n");
+        scanf("%s",&nomearqex);
+        remove(nomearqex);
+        system("cls");
+        printf("escreve o novo cadastro:\n");
+        printf("qual o nome do pet:");
+        scanf("%s",&nomepet);
+        printf("qual o nome do dono:");
+        scanf("%s",&nomed);
+        printf("qual a especie:");
+        scanf("%s",esp);
+        printf("qual a idade:");
+        scanf("%d", &idade);
+        printf("quais sintomas:");
+        scanf("%s",&desc);
+        printf("qual o diagnostico:");
+        scanf("%s",&diag);
+        system("cls");
+
+        arquivo = fopen (nomepet,"a");
+        fprintf(arquivo,"nome do animal: %s\n",nomepet);
+        fprintf(arquivo,"nome do dono: %s\n",nomed);
+        fprintf(arquivo,"especie: %s\n",esp);
+        fprintf(arquivo,"idade: %d\n",idade);
+        fprintf(arquivo,"sintomas: %s\n",desc);
+        fprintf(arquivo,"diagnostico: %s\n\n",diag);
+        fclose(arquivo);
+
+
+        break;
+
+    case 5:
+        arquivo = fopen("cadastros.txt","r");
+        while(fgets(cadastros, 1000, arquivo)!= NULL)
+            printf("%s",cadastros);
+             if (arquivo == NULL);
+             getch();
+             system("cls");
+
+        break;
+    }
+    }while(aux!=6);
+
+
+    return 0;
+    }
